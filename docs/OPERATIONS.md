@@ -215,7 +215,7 @@ Append entries; do not rewrite history.
 
 | Date | Event | By | Notes |
 | --- | --- | --- | --- |
-| 2026-11-02 | Local build completed | Build agent | Typecheck, lint, unit tests, production build; no Supabase project available |
+| 2026-11-02 | Local build completed | Build agent | Typecheck, lint, formatting, 59 unit tests, 70 E2E tests, production build, audit and secret scan all pass. Local commit `ee33212`. No Supabase project available |
 | _pending_ | Supabase project created | | Record region, plan, backup retention |
 | _pending_ | Migrations applied | | Record the applied timestamps |
 | _pending_ | First administrator provisioned | | Do **not** record the password here |

@@ -13,6 +13,7 @@ is stated plainly rather than skipped quietly.
 ```bash
 npm run typecheck      # tsc --noEmit, strict
 npm run lint           # eslint, zero warnings tolerated
+npm run format:check   # prettier, no unformatted files
 npm run test           # Vitest unit suite
 npm run test:e2e       # Playwright; starts the dev server automatically
 npm run build          # production build
@@ -133,6 +134,7 @@ Recorded on 2026-11-02, Windows, Node 26.13.0, no Supabase credentials. Reproduc
 | --- | --- |
 | `npm run typecheck` | **Pass** — no errors |
 | `npm run lint` | **Pass** — 0 errors, 0 warnings |
+| `npm run format:check` | **Pass** — all files match Prettier style |
 | `npm run test` | **Pass** — 6 files, 59 tests |
 | `npm run test:e2e` | **Pass** — 70 tests (35 × 2 projects) |
 | `npm run build` | **Pass** — 28 routes, Turbopack production build |

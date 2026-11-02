@@ -54,6 +54,8 @@ npx supabase db reset          # applies migrations + seed
 | `npm run build`         | Production build                                                          |
 | `npm run start`         | Serve the production build                                                |
 | `npm run lint`          | ESLint (zero warnings expected)                                           |
+| `npm run format`        | Prettier write                                                            |
+| `npm run format:check`  | Prettier check (CI-safe)                                                  |
 | `npm run typecheck`     | `tsc --noEmit`, strict                                                    |
 | `npm run test`          | Vitest unit suite                                                         |
 | `npm run test:watch`    | Vitest in watch mode                                                      |

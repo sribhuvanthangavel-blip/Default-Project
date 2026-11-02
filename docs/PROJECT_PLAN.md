@@ -150,7 +150,8 @@ Full details: `docs/ARCHITECTURE.md`, `docs/DATABASE.md`, `docs/SECURITY.md`.
 - No Supabase project credentials were available, so no live database, Auth configuration, email delivery
   or Vercel deployment could be exercised. The code path is implemented and the runbook is exact; results
   are reported honestly in the final summary.
-- GitHub/Vercel credentials were not available. A local Git repository is initialised; publishing is a
-  documented manual step.
+- GitHub/Vercel credentials were not available. A local Git repository is initialised on branch `main`
+  with one commit (`ee33212`, 146 tracked files) and a clean working tree; publishing to a remote is a
+  documented manual step (`docs/DEPLOYMENT.md` §5).
 - Clinic facts (address, phone, hours, dentist credentials, registration) were not supplied. Placeholders are
   used and listed in `docs/REQUIRED_CLINIC_INFORMATION.md`.
