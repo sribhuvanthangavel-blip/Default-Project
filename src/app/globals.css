@@ -1,0 +1,318 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, 'Times New Roman', serif;
+
+  --color-forest-950: #061711;
+  --color-forest-900: #0b241b;
+  --color-forest-800: #123226;
+  --color-forest-700: #1a4232;
+  --color-forest-600: #245441;
+  --color-forest-500: #336b54;
+  --color-forest-300: #8eae9c;
+  --color-forest-200: #c3d6cb;
+  --color-forest-100: #dce8e0;
+  --color-forest-50: #eff5f1;
+
+  --color-gold-700: #6f531c;
+  --color-gold-600: #8a6827;
+  --color-gold-500: #a98540;
+  --color-gold-400: #c3a15c;
+  --color-gold-300: #d8bd85;
+  --color-gold-200: #ead9b4;
+  --color-gold-100: #f4ead4;
+
+  --color-cream-50: #fcfaf5;
+  --color-cream-100: #f7f2e8;
+  --color-cream-200: #efe7d8;
+  --color-cream-300: #e2d6c1;
+  --color-cream-400: #cfbfa5;
+
+  --color-ink: #151914;
+  --color-muted: #5c645b;
+  --color-line: #e3dcce;
+
+  --color-sage-600: #2f6b4f;
+  --color-sage-100: #e3efe8;
+  --color-amber-700: #8a5f12;
+  --color-amber-100: #f7ecd4;
+  --color-clay-700: #8c3a31;
+  --color-clay-100: #f6e4e1;
+
+  --shadow-soft: 0 24px 70px -38px rgb(6 23 17 / 0.45);
+  --shadow-card: 0 1px 2px rgb(6 23 17 / 0.04), 0 18px 40px -30px rgb(6 23 17 / 0.28);
+  --radius-card: 1.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-gold-200 text-forest-950;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-normal;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/*
+ * `btn` is registered as a real utility (not a component class) so that the
+ * variants below can compose it with `@apply`. Tailwind v4 only resolves
+ * `@apply` against utilities, never against `@layer components` rules.
+ */
+@utility btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition-property:
+    color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[86rem] px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[0.68rem] font-semibold tracking-[0.24em] uppercase;
+  }
+
+  .display-1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.9rem, 6.4vw, 5.4rem);
+    line-height: 0.97;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+  }
+
+  .display-2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    font-weight: 300;
+  }
+
+  .display-3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .lede {
+    @apply text-[1.0625rem] leading-relaxed sm:text-lg;
+  }
+
+  .btn-primary {
+    @apply btn bg-gold-400 text-forest-950 hover:bg-gold-300;
+    box-shadow: 0 14px 30px -18px rgb(169 133 64 / 0.8);
+  }
+
+  .btn-dark {
+    @apply btn bg-forest-900 text-cream-50 hover:bg-forest-800;
+  }
+
+  .btn-outline {
+    @apply btn border border-forest-900/25 text-forest-900 hover:border-forest-900/60 hover:bg-forest-900/5;
+  }
+
+  .btn-light-outline {
+    @apply btn border border-cream-50/30 text-cream-50 hover:border-cream-50/70 hover:bg-cream-50/10;
+  }
+
+  .btn-sm {
+    @apply min-h-9 rounded-full px-4 py-2 text-[0.7rem];
+  }
+
+  .btn-danger {
+    @apply btn border border-clay-700/30 bg-clay-100 text-clay-700 hover:bg-clay-100/70;
+  }
+
+  .link-underline {
+    @apply underline decoration-gold-400/60 decoration-1 underline-offset-4 transition hover:decoration-gold-600;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-cream-50;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-dark {
+    @apply rounded-card border border-cream-50/10 bg-forest-900/60;
+  }
+
+  .field-label {
+    @apply mb-2 block text-[0.78rem] font-semibold tracking-wide text-forest-900;
+  }
+
+  .field-input {
+    @apply block min-h-12 w-full rounded-xl border border-line bg-white px-4 py-3 text-[0.95rem] text-ink shadow-none transition outline-none placeholder:text-muted/60 focus:border-gold-500 focus:ring-2 focus:ring-gold-400/25;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-[0.78rem] font-medium text-clay-700;
+  }
+
+  .field-hint {
+    @apply mt-1.5 text-[0.78rem] text-muted;
+  }
+
+  .admin-card {
+    @apply rounded-2xl border border-line bg-white;
+    box-shadow: var(--shadow-card);
+  }
+
+  .admin-label {
+    @apply mb-1.5 block text-xs font-semibold tracking-wide text-muted uppercase;
+  }
+
+  .admin-input {
+    @apply block min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink transition outline-none placeholder:text-muted/50 focus:border-forest-600 focus:ring-2 focus:ring-forest-600/15;
+  }
+
+  .table-wrap {
+    @apply w-full overflow-x-auto;
+  }
+
+  .data-table {
+    @apply w-full min-w-[46rem] border-collapse text-left text-sm;
+  }
+
+  .data-table th {
+    @apply border-b border-line px-4 py-3 text-[0.68rem] font-semibold tracking-[0.12em] text-muted uppercase;
+  }
+
+  .data-table td {
+    @apply border-b border-line/70 px-4 py-3.5 align-top;
+  }
+
+  .data-table tbody tr:hover {
+    @apply bg-cream-50/70;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .nav-link {
+    @apply relative text-[0.8rem] font-medium tracking-[0.06em] text-forest-900/80 uppercase transition hover:text-forest-900;
+  }
+
+  .nav-link[aria-current='page'] {
+    @apply text-forest-950;
+  }
+
+  .nav-link[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.5rem;
+    height: 1px;
+    background: var(--color-gold-500);
+  }
+
+  .prose-clinic h2 {
+    @apply mt-12 mb-4 font-display text-3xl text-forest-900;
+  }
+
+  .prose-clinic h3 {
+    @apply mt-8 mb-3 text-lg font-semibold text-forest-900;
+  }
+
+  .prose-clinic p {
+    @apply mb-4 text-[0.98rem] leading-7 text-muted;
+  }
+
+  .prose-clinic ul {
+    @apply mb-5 list-disc space-y-2 pl-5 text-[0.98rem] leading-7 text-muted;
+  }
+
+  .prose-clinic a {
+    @apply text-forest-800 underline decoration-gold-400 underline-offset-4;
+  }
+}
